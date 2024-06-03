@@ -21,11 +21,6 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://alexevag.github.io/testcore/core.Logger/</loc>
-         <lastmod>2024-06-03</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://alexevag.github.io/testcore/ethopy/</loc>
          <lastmod>2024-06-03</lastmod>
          <changefreq>daily</changefreq>
@@ -37,6 +32,11 @@
     </url>
     <url>
          <loc>https://alexevag.github.io/testcore/installation/</loc>
+         <lastmod>2024-06-03</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://alexevag.github.io/testcore/logger/</loc>
          <lastmod>2024-06-03</lastmod>
          <changefreq>daily</changefreq>
     </url>
