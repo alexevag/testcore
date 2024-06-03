@@ -571,7 +571,7 @@ class Task(dj.Lookup):
     timestamp                   : timestamp    
     """
 
-    contents = generate_conf_list("conf/")
+    # contents = generate_conf_list("conf/")
 
 @mice.schema
 class MouseWeight(dj.Manual):

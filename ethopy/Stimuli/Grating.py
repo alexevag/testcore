@@ -1,7 +1,7 @@
 from ethopy.core.Stimulus import *
 import io, imageio
-from utils.helper_functions import flat2curve
-from utils.Presenter import *
+from ethopy.utils.helper_functions import flat2curve
+from ethopy.utils.Presenter import *
 
 
 @stimulus.schema

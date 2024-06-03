@@ -1,5 +1,5 @@
 from ethopy.core.Behavior import *
-from utils.Timer import *
+from ethopy.utils.Timer import *
 import numpy as np
 
 
