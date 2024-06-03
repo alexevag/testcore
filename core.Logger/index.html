@@ -1,0 +1,2664 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Python Boilerplate contains all the boilerplate you need to create a Python package.">
+      
+      
+        <meta name="author" content="alexevag">
+      
+      
+        <link rel="canonical" href="https://alexevag.github.io/testcore/core.Logger/">
+      
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.25">
+    
+    
+      
+        <title>Core Logger module - testcore</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.6543a935.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Google+Sans:300,300i,400,400i,700,700i%7CRegular:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Google Sans";--md-code-font:"Regular"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../css/timeago.css">
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#core-logger-module" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="testcore" class="md-header__button md-logo" aria-label="testcore" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            testcore
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Core Logger module
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/alexevag/testcore" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="testcore" class="md-nav__button md-logo" aria-label="testcore" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    testcore
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/alexevag/testcore" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Installation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../usage/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Usage
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contributing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contributing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../changelog/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Changelog
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/alexevag/testcore/issues" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Report Issues
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Examples
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Examples
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/intro/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Intro
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    API Reference
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            API Reference
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ethopy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ethopy module
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../common/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    common module
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ethopy.core.Logger" class="md-nav__link">
+    <span class="md-ellipsis">
+      ethopy.core.Logger
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ethopy.core.Logger.Logger" class="md-nav__link">
+    <span class="md-ellipsis">
+      Logger
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Logger">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ethopy.core.Logger.Logger.protocol_path" class="md-nav__link">
+    <span class="md-ellipsis">
+      protocol_path
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ethopy.core.Logger.Logger.createDataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      createDataset()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ethopy.core.Logger.Logger.get" class="md-nav__link">
+    <span class="md-ellipsis">
+      get()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ethopy.core.Logger.Logger.get_path" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_path()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ethopy.core.Logger.Logger.handle_error" class="md-nav__link">
+    <span class="md-ellipsis">
+      handle_error()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ethopy.core.Logger.Logger.insert_item" class="md-nav__link">
+    <span class="md-ellipsis">
+      insert_item()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ethopy.core.Logger.Logger.inserter" class="md-nav__link">
+    <span class="md-ellipsis">
+      inserter()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ethopy.core.Logger.Logger.log" class="md-nav__link">
+    <span class="md-ellipsis">
+      log()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ethopy.core.Logger.Logger.log_session" class="md-nav__link">
+    <span class="md-ellipsis">
+      log_session()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ethopy.core.Logger.Logger.put" class="md-nav__link">
+    <span class="md-ellipsis">
+      put()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ethopy.core.Logger.Logger.setup_schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      setup_schema()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ethopy.core.Logger.Logger.update_protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      update_protocol()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ethopy.core.Logger.Logger.update_setup_info" class="md-nav__link">
+    <span class="md-ellipsis">
+      update_setup_info()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ethopy.core.Logger.Logger.validate_item" class="md-nav__link">
+    <span class="md-ellipsis">
+      validate_item()
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ethopy.core.Logger.PrioritizedItem" class="md-nav__link">
+    <span class="md-ellipsis">
+      PrioritizedItem
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+
+
+
+                  
+
+  
+  
+
+
+<h1 id="core-logger-module">Core Logger module<a class="headerlink" href="#core-logger-module" title="Permanent link">&para;</a></h1>
+
+
+  <div class="doc doc-object doc-module">
+
+<a id="ethopy.core.Logger"></a>
+    <div class="doc doc-contents first">
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h2 id="ethopy.core.Logger.Logger" class="doc doc-heading">
+        <code>
+Logger        </code>
+
+
+
+<a href="#ethopy.core.Logger.Logger" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+
+        <details class="quote">
+          <summary>Source code in <code>ethopy/core/Logger.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Logger</span><span class="p">:</span>
+    <span class="n">DEFAULT_SOURCE_PATH</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s2">&quot;~&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/EthoPy_Files/&quot;</span>
+    <span class="n">DEFAULT_TARGET_PATH</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">protocol</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">setup</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">gethostname</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_pi</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_check_if_raspberry_pi</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">task_idx</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">protocol_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parse_protocol</span><span class="p">(</span><span class="n">protocol</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">manual_run</span> <span class="o">=</span> <span class="kc">True</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">protocol_path</span> <span class="k">else</span> <span class="kc">False</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">setup_status</span> <span class="o">=</span> <span class="s2">&quot;running&quot;</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">manual_run</span> <span class="k">else</span> <span class="s2">&quot;ready&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">writer</span> <span class="o">=</span> <span class="n">Writer</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rec_fliptimes</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">trial_key</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;animal_id&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;session&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;trial_idx&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setup_info</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">datasets</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lock</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">queue</span> <span class="o">=</span> <span class="n">PriorityQueue</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ping_timer</span> <span class="o">=</span> <span class="n">Timer</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger_timer</span> <span class="o">=</span> <span class="n">Timer</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">total_reward</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">curr_state</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+
+        <span class="c1"># separate connection for internal communication</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">private_conn</span> <span class="o">=</span> <span class="n">dj</span><span class="o">.</span><span class="n">Connection</span><span class="p">(</span>
+            <span class="n">dj</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">&quot;database.host&quot;</span><span class="p">],</span>
+            <span class="n">dj</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">&quot;database.user&quot;</span><span class="p">],</span>
+            <span class="n">dj</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">&quot;database.password&quot;</span><span class="p">],</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_schemata</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_initialize_schemata</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">source_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_path</span><span class="p">(</span><span class="s2">&quot;source_path&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">DEFAULT_SOURCE_PATH</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">target_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_path</span><span class="p">(</span><span class="s2">&quot;target_path&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">DEFAULT_TARGET_PATH</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">thread_end</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">thread_lock</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Event</span><span class="p">(),</span> <span class="n">threading</span><span class="o">.</span><span class="n">Lock</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">inserter_thread</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">inserter</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">getter_thread</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_sync_setup_info</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">inserter_thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_log_setup</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">task_idx</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">getter_thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger_timer</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_parse_protocol</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">protocol</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">protocol</span> <span class="ow">and</span> <span class="n">protocol</span><span class="o">.</span><span class="n">isdigit</span><span class="p">():</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;int protocol&quot;</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">protocol</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_find_protocol_path</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">protocol</span><span class="p">)))</span>
+            <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">protocol</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_find_protocol_path</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">protocol</span><span class="p">))</span>
+        <span class="k">elif</span> <span class="n">protocol</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">protocol</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;_validate_protocol protocol&quot;</span><span class="p">,</span> <span class="n">protocol</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">None</span><span class="p">,</span> <span class="n">protocol</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">update_protocol</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This method updates the protocol path based on the current setup.</span>
+
+<span class="sd">        If the run is manual, it checks if the protocol file exists at the specified path.</span>
+<span class="sd">        If the file does not exist, it prints an error message and returns False.</span>
+
+<span class="sd">        If the run is not manual, it fetches the task index from the setup info.</span>
+<span class="sd">        It then checks if there is a task with this index in the experiment&#39;s Task table.</span>
+<span class="sd">        If there is no such task, it returns False.</span>
+<span class="sd">        Otherwise, it fetches the protocol associated with this task and updates the protocol path.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: True if the protocol path was successfully updated, False otherwise.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">manual_run</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">protocol_path</span><span class="p">):</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Protocol file </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">protocol_path</span><span class="si">}</span><span class="s2"> not found!&quot;</span><span class="p">)</span>
+                <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">task_idx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_setup_info</span><span class="p">(</span><span class="s1">&#39;task_idx&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">experiment</span><span class="o">.</span><span class="n">Task</span><span class="p">()</span> <span class="o">&amp;</span> <span class="nb">dict</span><span class="p">(</span><span class="n">task_idx</span><span class="o">=</span><span class="n">task_idx</span><span class="p">))</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">return</span> <span class="kc">False</span>
+            <span class="n">protocol</span> <span class="o">=</span> <span class="p">(</span><span class="n">experiment</span><span class="o">.</span><span class="n">Task</span><span class="p">()</span> <span class="o">&amp;</span> <span class="nb">dict</span><span class="p">(</span><span class="n">task_idx</span><span class="o">=</span><span class="n">task_idx</span><span class="p">))</span><span class="o">.</span><span class="n">fetch1</span><span class="p">(</span><span class="s1">&#39;protocol&#39;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">protocol_path</span> <span class="o">=</span> <span class="n">protocol</span>
+        <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">protocol_path</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get the protocol path.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: The protocol path.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_protocol_path</span>
+
+    <span class="nd">@protocol_path</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">protocol_path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">protocol_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set the protocol path. if protocol_path has only filename</span>
+<span class="sd">        set the protocol_path at the conf directory.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            protocol_path (str): The protocol path.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="n">protocol_path</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">path</span><span class="p">,</span> <span class="n">filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">protocol_path</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">path</span><span class="p">:</span>
+                <span class="n">protocol_path</span> <span class="o">=</span> <span class="p">(</span>
+                    <span class="nb">str</span><span class="p">(</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">absolute</span><span class="p">())</span> <span class="o">+</span> <span class="s2">&quot;/../conf/&quot;</span> <span class="o">+</span> <span class="n">filename</span>
+                <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_protocol_path</span> <span class="o">=</span> <span class="n">protocol_path</span>
+
+    <span class="k">def</span> <span class="nf">_find_protocol_path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task_idx</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;find the protocol path from the task index&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">task_idx</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">(</span><span class="n">experiment</span><span class="o">.</span><span class="n">Task</span><span class="p">()</span> <span class="o">&amp;</span> <span class="nb">dict</span><span class="p">(</span><span class="n">task_idx</span><span class="o">=</span><span class="n">task_idx</span><span class="p">))</span><span class="o">.</span><span class="n">fetch1</span><span class="p">(</span><span class="s2">&quot;protocol&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="k">def</span> <span class="nf">_initialize_schemata</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">dj</span><span class="o">.</span><span class="n">VirtualModule</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="n">schema</span><span class="p">:</span> <span class="n">dj</span><span class="o">.</span><span class="n">create_virtual_module</span><span class="p">(</span>
+                <span class="n">schema</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">connection</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">private_conn</span>
+            <span class="p">)</span>
+            <span class="k">for</span> <span class="n">schema</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">SCHEMATA</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+        <span class="p">}</span>
+
+    <span class="k">def</span> <span class="nf">_check_if_raspberry_pi</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="n">system</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">uname</span><span class="p">()</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="n">system</span><span class="o">.</span><span class="n">machine</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;arm&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">system</span><span class="o">.</span><span class="n">machine</span> <span class="o">==</span> <span class="s2">&quot;aarch64&quot;</span>
+            <span class="k">if</span> <span class="n">system</span><span class="o">.</span><span class="n">system</span> <span class="o">==</span> <span class="s2">&quot;Linux&quot;</span>
+            <span class="k">else</span> <span class="kc">False</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">get_path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path_key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">default_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get the path from the configuration or create a new directory at the default path.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">        path_key (str): The key to look up in the configuration.</span>
+<span class="sd">        default_path (str): The path to use if the key is not in the configuration.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">        str: The path from the configuration or the default path.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">path_key</span><span class="p">,</span> <span class="n">default_path</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">path</span><span class="p">:</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Setting storage directory: </span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">path</span>
+
+    <span class="k">def</span> <span class="nf">setup_schema</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">extra_schema</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set up additional schema.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">        extra_schema (Dict[str, Any]): The additional schema to set up.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">schema</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">extra_schema</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="nb">globals</span><span class="p">()[</span><span class="n">schema</span><span class="p">]</span> <span class="o">=</span> <span class="n">dj</span><span class="o">.</span><span class="n">create_virtual_module</span><span class="p">(</span>
+                <span class="n">schema</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">create_tables</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">create_schema</span><span class="o">=</span><span class="kc">True</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_schemata</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+                <span class="p">{</span>
+                    <span class="n">schema</span><span class="p">:</span> <span class="n">dj</span><span class="o">.</span><span class="n">create_virtual_module</span><span class="p">(</span>
+                        <span class="n">schema</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">connection</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">private_conn</span>
+                    <span class="p">)</span>
+                <span class="p">}</span>
+            <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">put</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Put an item in the queue.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">        **kwargs (Any): The item to put in the queue.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">item</span> <span class="o">=</span> <span class="n">PrioritizedItem</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">queue</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">item</span><span class="o">.</span><span class="n">block</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">queue</span><span class="o">.</span><span class="n">task_done</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">queue</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">insert_item</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">table</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Inserts an item into the specified table.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            item: The item to be inserted.</span>
+<span class="sd">            table: The table to insert the item into.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">table</span><span class="o">.</span><span class="n">insert1</span><span class="p">(</span>
+            <span class="n">item</span><span class="o">.</span><span class="n">tuple</span><span class="p">,</span>
+            <span class="n">ignore_extra_fields</span><span class="o">=</span><span class="n">item</span><span class="o">.</span><span class="n">ignore_extra_fields</span><span class="p">,</span>
+            <span class="n">skip_duplicates</span><span class="o">=</span><span class="kc">False</span> <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">replace</span> <span class="k">else</span> <span class="kc">True</span><span class="p">,</span>
+            <span class="n">replace</span><span class="o">=</span><span class="n">item</span><span class="o">.</span><span class="n">replace</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">validate_item</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">table</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Validates an item against a table.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">validate</span><span class="p">:</span>  <span class="c1"># validate tuple exists in database</span>
+            <span class="n">key</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="ow">in</span> <span class="n">item</span><span class="o">.</span><span class="n">tuple</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">table</span><span class="o">.</span><span class="n">primary_key</span><span class="p">}</span>
+            <span class="k">if</span> <span class="s2">&quot;status&quot;</span> <span class="ow">in</span> <span class="n">item</span><span class="o">.</span><span class="n">tuple</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                <span class="n">key</span><span class="p">[</span><span class="s2">&quot;status&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">tuple</span><span class="p">[</span><span class="s2">&quot;status&quot;</span><span class="p">]</span>
+            <span class="k">while</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">table</span> <span class="o">&amp;</span> <span class="n">key</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">handle_error</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">table</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">thread_end</span><span class="p">,</span> <span class="n">queue</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Handles an error by logging the error message and add the item again in the queue</span>
+<span class="sd">        and re-trying again later.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">        item : Description of parameter `item`.</span>
+<span class="sd">        table : Description of parameter `table`.</span>
+<span class="sd">        e (Exception): The exception that was raised.</span>
+<span class="sd">        thread_end : Description of parameter `thread_end`.</span>
+<span class="sd">        queue : Description of parameter `queue`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">str_error</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Failed to insert:</span><span class="se">\n</span><span class="si">{</span><span class="n">item</span><span class="o">.</span><span class="n">tuple</span><span class="si">}</span><span class="se">\n</span><span class="s2"> in </span><span class="si">{</span><span class="n">table</span><span class="si">}</span><span class="se">\n</span><span class="s2"> With error:</span><span class="se">\n</span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">error</span><span class="p">:</span>
+            <span class="n">thread_end</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
+            <span class="k">raise</span> <span class="n">str_error</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Second time...&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">str_error</span><span class="o">+</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Will retry later&quot;</span><span class="p">)</span>
+        <span class="n">item</span><span class="o">.</span><span class="n">error</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">item</span><span class="o">.</span><span class="n">priority</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">priority</span> <span class="o">+</span> <span class="mi">2</span>
+        <span class="n">queue</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">inserter</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This method continuously inserts items from the queue into their respective tables in</span>
+<span class="sd">        the database.</span>
+
+<span class="sd">        It runs in a loop until the thread_end event is set. In each iteration, it checks if</span>
+<span class="sd">        the queue is empty.</span>
+<span class="sd">        If it is, it sleeps for 0.5 seconds and then continues to the next iteration.</span>
+<span class="sd">        If the queue is not empty.</span>
+<span class="sd">        it gets an item from the queue, acquires the thread lock, and tries to insert</span>
+<span class="sd">        the item into its table.</span>
+<span class="sd">        If an error occurs during the insertion, it handles the error.</span>
+<span class="sd">        After the insertion, it releases the thread lock.</span>
+<span class="sd">        If the item was marked to block, it marks the task as done.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">while</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">thread_end</span><span class="o">.</span><span class="n">is_set</span><span class="p">():</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">queue</span><span class="o">.</span><span class="n">empty</span><span class="p">():</span>
+                <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+                <span class="k">continue</span>
+            <span class="n">item</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">queue</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+            <span class="n">table</span> <span class="o">=</span> <span class="n">rgetattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_schemata</span><span class="p">[</span><span class="n">item</span><span class="o">.</span><span class="n">schema</span><span class="p">],</span> <span class="n">item</span><span class="o">.</span><span class="n">table</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">thread_lock</span><span class="o">.</span><span class="n">acquire</span><span class="p">()</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">insert_item</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">table</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">validate_item</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">table</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">error</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">thread_end</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
+                    <span class="k">raise</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">handle_error</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">table</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">thread_end</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">queue</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">thread_lock</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">block</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">queue</span><span class="o">.</span><span class="n">task_done</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_sync_setup_info</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This method continuously updates the setup information and status from the experiment</span>
+<span class="sd">        database.</span>
+
+<span class="sd">        It runs in a loop until the thread_end event is set. In each iteration, it acquires the thread lock,</span>
+<span class="sd">        fetches the setup information from the Control table in the experiment database, releases the thread lock,</span>
+<span class="sd">        and updates the setup status. It then sleeps for 1 second before the next iteration.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">while</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">thread_end</span><span class="o">.</span><span class="n">is_set</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">thread_lock</span><span class="o">.</span><span class="n">acquire</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">setup_info</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_schemata</span><span class="p">[</span><span class="s2">&quot;experiment&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">Control</span><span class="p">()</span> <span class="o">&amp;</span> <span class="nb">dict</span><span class="p">(</span><span class="n">setup</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">setup</span><span class="p">)</span>
+            <span class="p">)</span><span class="o">.</span><span class="n">fetch1</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">thread_lock</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">setup_status</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">setup_info</span><span class="p">[</span><span class="s2">&quot;status&quot;</span><span class="p">]</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># update once a second</span>
+
+    <span class="k">def</span> <span class="nf">log</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">table</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This method logs the given data into the specified table in the experiment database.</span>
+
+<span class="sd">        It first gets the elapsed time from the logger timer and adds it to the data dictionary.</span>
+<span class="sd">        It then puts the data into the specified table. If the manual_run flag is set and the</span>
+<span class="sd">        table is &quot;Trial.StateOnset&quot;,</span>
+<span class="sd">        it prints the state.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            table (str): The name of the table in the experiment database.</span>
+<span class="sd">            data (dict, optional): The data to be logged. Defaults to an empty dictionary.</span>
+<span class="sd">            **kwargs: Additional keyword arguments to be passed to the put method.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            float: The elapsed time from the logger timer.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">tmst</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">logger_timer</span><span class="o">.</span><span class="n">elapsed_time</span><span class="p">()</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">data</span> <span class="ow">or</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">table</span><span class="o">=</span><span class="n">table</span><span class="p">,</span> <span class="nb">tuple</span><span class="o">=</span><span class="p">{</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">trial_key</span><span class="p">,</span> <span class="s2">&quot;time&quot;</span><span class="p">:</span> <span class="n">tmst</span><span class="p">,</span> <span class="o">**</span><span class="n">data</span><span class="p">},</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">manual_run</span> <span class="ow">and</span> <span class="n">table</span> <span class="o">==</span> <span class="s2">&quot;Trial.StateOnset&quot;</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;State: &quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;state&quot;</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">tmst</span>
+
+    <span class="k">def</span> <span class="nf">_log_setup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This method logs the setup information into the Control table in the experiment database.</span>
+
+<span class="sd">        It first fetches the control information for the current setup. If no control information is found,</span>
+<span class="sd">        it creates a new dictionary with the setup information. If a task is provided and it is an integer,</span>
+<span class="sd">        it adds the task index to the key. It then adds the IP and status information to the key.</span>
+
+<span class="sd">        The method finally puts the key into the Control table, replacing any existing entry with the same key.</span>
+<span class="sd">        It blocks until the operation is complete and validates the operation.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            task (int, optional): The task index. Defaults to None.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">rel</span> <span class="o">=</span> <span class="n">experiment</span><span class="o">.</span><span class="n">Control</span><span class="p">()</span> <span class="o">&amp;</span> <span class="nb">dict</span><span class="p">(</span><span class="n">setup</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">setup</span><span class="p">)</span>
+        <span class="n">key</span> <span class="o">=</span> <span class="n">rel</span><span class="o">.</span><span class="n">fetch1</span><span class="p">()</span> <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">rel</span><span class="o">.</span><span class="n">fetch</span><span class="p">())</span> <span class="k">else</span> <span class="nb">dict</span><span class="p">(</span><span class="n">setup</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">setup</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">task</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+            <span class="n">key</span><span class="p">[</span><span class="s2">&quot;task_idx&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">task</span>
+        <span class="n">key</span> <span class="o">=</span> <span class="p">{</span><span class="o">**</span><span class="n">key</span><span class="p">,</span> <span class="s2">&quot;ip&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_ip</span><span class="p">(),</span> <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">setup_status</span><span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">put</span><span class="p">(</span>
+            <span class="n">table</span><span class="o">=</span><span class="s2">&quot;Control&quot;</span><span class="p">,</span>
+            <span class="nb">tuple</span><span class="o">=</span><span class="n">key</span><span class="p">,</span>
+            <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">priority</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+            <span class="n">block</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">validate</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_get_last_session</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This method fetches the last session for a given animal_id from the experiment.Session.</span>
+
+<span class="sd">        It first fetches all sessions for the given animal_id. If no sessions are found,</span>
+<span class="sd">        it returns 0.</span>
+<span class="sd">        If sessions are found, it returns the maximum session number, which corresponds to</span>
+<span class="sd">        the last session.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            int: The last session number or 0 if no sessions are found.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">last_sessions</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">experiment</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span> <span class="o">&amp;</span> <span class="nb">dict</span><span class="p">(</span><span class="n">animal_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">get_setup_info</span><span class="p">(</span><span class="s2">&quot;animal_id&quot;</span><span class="p">))</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="s2">&quot;session&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="mi">0</span> <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">last_sessions</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">last_sessions</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">log_session</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="n">log_protocol</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Logs a session with the given parameters and optionally logs the protocol.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            params (Dict[str, Any]): Parameters for the session.</span>
+<span class="sd">            log_protocol (bool): Whether to log the protocol information.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_initialize_session</span><span class="p">()</span>
+        <span class="n">session_key</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_session_key</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_log_session_entry</span><span class="p">(</span><span class="n">session_key</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">log_protocol</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_log_protocol</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_log_configuration</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_log_additional_configurations</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_setup_status</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger_timer</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>  <span class="c1"># Start session time</span>
+
+    <span class="k">def</span> <span class="nf">_initialize_session</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initializes session attributes.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            params (Dict[str, Any]): Parameters for the session.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">total_reward</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">trial_key</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;animal_id&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_setup_info</span><span class="p">(</span><span class="s2">&quot;animal_id&quot;</span><span class="p">),</span>
+            <span class="s2">&quot;trial_idx&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;session&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_last_session</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="p">}</span>
+
+    <span class="k">def</span> <span class="nf">_create_session_key</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Creates a session key by merging trial key with session parameters.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            params (Dict[str, Any]): Parameters for the session.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Dict[str, Any]: The complete session key.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">trial_key</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">params</span><span class="p">,</span>
+            <span class="s2">&quot;setup&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">setup</span><span class="p">,</span>
+            <span class="s2">&quot;user_name&quot;</span><span class="p">:</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;user_name&quot;</span><span class="p">,</span> <span class="s2">&quot;bot&quot;</span><span class="p">),</span>
+        <span class="p">}</span>
+
+    <span class="k">def</span> <span class="nf">_log_session_entry</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">session_key</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Logs the session entry to the database.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            session_key (Dict[str, Any]): The session key to log.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">manual_run</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Logging Session:&quot;</span><span class="p">)</span>
+            <span class="n">pprint</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">session_key</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">put</span><span class="p">(</span>
+            <span class="n">table</span><span class="o">=</span><span class="s2">&quot;Session&quot;</span><span class="p">,</span> <span class="nb">tuple</span><span class="o">=</span><span class="n">session_key</span><span class="p">,</span> <span class="n">priority</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">validate</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">block</span><span class="o">=</span><span class="kc">True</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_log_protocol</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Logs the protocol information to the database.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">pr_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">protocol_path</span>
+        <span class="n">pr_file</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fromfile</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">protocol_path</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int8</span><span class="p">)</span>
+        <span class="n">git_hash</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">subprocess</span><span class="o">.</span><span class="n">check_output</span><span class="p">([</span><span class="s2">&quot;git&quot;</span><span class="p">,</span> <span class="s2">&quot;rev-parse&quot;</span><span class="p">,</span> <span class="s2">&quot;--short&quot;</span><span class="p">,</span> <span class="s2">&quot;HEAD&quot;</span><span class="p">])</span>
+            <span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;ascii&quot;</span><span class="p">)</span>
+            <span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">put</span><span class="p">(</span>
+            <span class="n">table</span><span class="o">=</span><span class="s2">&quot;Session.Protocol&quot;</span><span class="p">,</span>
+            <span class="nb">tuple</span><span class="o">=</span><span class="p">{</span>
+                <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">trial_key</span><span class="p">,</span>
+                <span class="s2">&quot;protocol_name&quot;</span><span class="p">:</span> <span class="n">pr_name</span><span class="p">,</span>
+                <span class="s2">&quot;protocol_file&quot;</span><span class="p">:</span> <span class="n">pr_file</span><span class="p">,</span>
+                <span class="s2">&quot;git_hash&quot;</span><span class="p">:</span> <span class="n">git_hash</span><span class="p">,</span>
+            <span class="p">},</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_log_configuration</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Logs the basic configuration to the database.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">put</span><span class="p">(</span>
+            <span class="n">table</span><span class="o">=</span><span class="s2">&quot;Configuration&quot;</span><span class="p">,</span>
+            <span class="nb">tuple</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">trial_key</span><span class="p">,</span>
+            <span class="n">schema</span><span class="o">=</span><span class="s2">&quot;behavior&quot;</span><span class="p">,</span>
+            <span class="n">priority</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+            <span class="n">validate</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">block</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">put</span><span class="p">(</span>
+            <span class="n">table</span><span class="o">=</span><span class="s2">&quot;Configuration&quot;</span><span class="p">,</span>
+            <span class="nb">tuple</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">trial_key</span><span class="p">,</span>
+            <span class="n">schema</span><span class="o">=</span><span class="s2">&quot;stimulus&quot;</span><span class="p">,</span>
+            <span class="n">priority</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+            <span class="n">validate</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">block</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_log_additional_configurations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Logs additional configurations like ports, screens, balls, and speakers.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            params (Dict[str, Any]): Parameters for the session.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">configurations</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="p">(</span><span class="s2">&quot;Port&quot;</span><span class="p">,</span> <span class="s2">&quot;behavior&quot;</span><span class="p">),</span>
+            <span class="p">(</span><span class="s2">&quot;Screen&quot;</span><span class="p">,</span> <span class="s2">&quot;stimulus&quot;</span><span class="p">),</span>
+            <span class="p">(</span><span class="s2">&quot;Ball&quot;</span><span class="p">,</span> <span class="s2">&quot;behavior&quot;</span><span class="p">),</span>
+            <span class="p">(</span><span class="s2">&quot;Speaker&quot;</span><span class="p">,</span> <span class="s2">&quot;stimulus&quot;</span><span class="p">),</span>
+        <span class="p">]</span>
+        <span class="k">for</span> <span class="n">config_type</span><span class="p">,</span> <span class="n">schema</span> <span class="ow">in</span> <span class="n">configurations</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_log_individual_configuration</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">config_type</span><span class="p">,</span> <span class="n">schema</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_log_individual_configuration</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="n">config_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">schema</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Logs individual configuration type to the database.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            params (Dict[str, Any]): Parameters for the session.</span>
+<span class="sd">            config_type (str): The type of configuration (e.g., Port, Screen).</span>
+<span class="sd">            schema (str): The schema for the configuration.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">configuration_data</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="nb">getattr</span><span class="p">(</span><span class="n">experiment</span><span class="o">.</span><span class="n">SetupConfiguration</span><span class="p">,</span> <span class="n">config_type</span><span class="p">)</span>
+            <span class="o">&amp;</span> <span class="p">{</span><span class="s2">&quot;setup_conf_idx&quot;</span><span class="p">:</span> <span class="n">params</span><span class="p">[</span><span class="s2">&quot;setup_conf_idx&quot;</span><span class="p">]}</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="n">as_dict</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">conf</span> <span class="ow">in</span> <span class="n">configuration_data</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">put</span><span class="p">(</span>
+                <span class="n">table</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Configuration.</span><span class="si">{</span><span class="n">config_type</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="nb">tuple</span><span class="o">=</span><span class="p">{</span><span class="o">**</span><span class="n">conf</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">trial_key</span><span class="p">},</span>
+                <span class="n">schema</span><span class="o">=</span><span class="n">schema</span><span class="p">,</span>
+            <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_set_setup_status</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Sets the setup status and updates setup information.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            params (Dict[str, Any]): Parameters for the session.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">key</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;session&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">trial_key</span><span class="p">[</span><span class="s2">&quot;session&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;trials&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;total_liquid&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;difficulty&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="c1"># if in the start_time is defined in the configuration use this</span>
+        <span class="c1"># otherwise use the Control table</span>
+        <span class="k">if</span> <span class="s2">&quot;start_time&quot;</span> <span class="ow">in</span> <span class="n">params</span><span class="p">:</span>
+
+            <span class="k">def</span> <span class="nf">tdelta</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+                <span class="k">return</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="s2">&quot;%H:%M:%S&quot;</span><span class="p">)</span> <span class="o">-</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span>
+                    <span class="s2">&quot;00:00:00&quot;</span><span class="p">,</span> <span class="s2">&quot;%H:%M:%S&quot;</span>
+                <span class="p">)</span>
+
+            <span class="n">key</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;start_time&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">tdelta</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;start_time&quot;</span><span class="p">])),</span>
+                    <span class="s2">&quot;stop_time&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">tdelta</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;stop_time&quot;</span><span class="p">])),</span>
+                <span class="p">}</span>
+            <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">update_setup_info</span><span class="p">({</span><span class="o">**</span><span class="n">key</span><span class="p">,</span> <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">setup_info</span><span class="p">[</span><span class="s2">&quot;status&quot;</span><span class="p">]})</span>
+
+    <span class="k">def</span> <span class="nf">update_setup_info</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">info</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="n">key</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This method updates the setup information with the provided info and key.</span>
+
+<span class="sd">        It first fetches the existing setup information from the experiment&#39;s Control table,</span>
+<span class="sd">        then updates it with the provided info. If &#39;status&#39; is in the provided info, it blocks</span>
+<span class="sd">        and validates the update operation.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            info (dict): The information to update the setup with.</span>
+<span class="sd">            key (dict, optional): Additional keys to fetch the setup information with.</span>
+<span class="sd">            Defaults to an empty dict.</span>
+
+<span class="sd">        Side Effects:</span>
+<span class="sd">            Updates the setup_info attribute with the new setup information.</span>
+<span class="sd">            Updates the setup_status attribute with the new status.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">key</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setup_info</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="o">**</span><span class="p">(</span><span class="n">experiment</span><span class="o">.</span><span class="n">Control</span><span class="p">()</span> <span class="o">&amp;</span> <span class="p">{</span><span class="o">**</span><span class="p">{</span><span class="s2">&quot;setup&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">setup</span><span class="p">},</span> <span class="o">**</span><span class="n">key</span><span class="p">})</span><span class="o">.</span><span class="n">fetch1</span><span class="p">(),</span>
+            <span class="o">**</span><span class="n">info</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="n">block</span> <span class="o">=</span> <span class="kc">True</span> <span class="k">if</span> <span class="s2">&quot;status&quot;</span> <span class="ow">in</span> <span class="n">info</span> <span class="k">else</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">put</span><span class="p">(</span>
+            <span class="n">table</span><span class="o">=</span><span class="s2">&quot;Control&quot;</span><span class="p">,</span>
+            <span class="nb">tuple</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">setup_info</span><span class="p">,</span>
+            <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">priority</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+            <span class="n">block</span><span class="o">=</span><span class="n">block</span><span class="p">,</span>
+            <span class="n">validate</span><span class="o">=</span><span class="n">block</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setup_status</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">setup_info</span><span class="p">[</span><span class="s2">&quot;status&quot;</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">get_setup_info</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">field</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">experiment</span><span class="o">.</span><span class="n">Control</span><span class="p">()</span> <span class="o">&amp;</span> <span class="nb">dict</span><span class="p">(</span><span class="n">setup</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">setup</span><span class="p">))</span><span class="o">.</span><span class="n">fetch1</span><span class="p">(</span><span class="n">field</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">schema</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;experiment&quot;</span><span class="p">,</span>
+        <span class="n">table</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;Control&quot;</span><span class="p">,</span>
+        <span class="n">fields</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="n">key</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(),</span>
+        <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Fetches data from a specified table in a schema.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">        schema (str): The schema to fetch data from. Defaults to &quot;experiment&quot;.</span>
+<span class="sd">        table (str): The table to fetch data from. Defaults to &quot;Control&quot;.</span>
+<span class="sd">        fields (str): The fields to fetch. Defaults to &quot;&quot;.</span>
+<span class="sd">        key (dict): The key used to fetch data. Defaults to an empty dict.</span>
+<span class="sd">        **kwargs: Additional keyword arguments.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">        The fetched data.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">_table</span> <span class="o">=</span> <span class="n">rgetattr</span><span class="p">(</span><span class="nb">eval</span><span class="p">(</span><span class="n">schema</span><span class="p">),</span> <span class="n">table</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">_table</span><span class="p">()</span> <span class="o">&amp;</span> <span class="n">key</span><span class="p">)</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="o">*</span><span class="n">fields</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">update_trial_idx</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">trial_idx</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">trial_key</span><span class="p">[</span><span class="s2">&quot;trial_idx&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">trial_idx</span>
+
+    <span class="k">def</span> <span class="nf">ping</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">period</span><span class="o">=</span><span class="mi">5000</span><span class="p">):</span>
+        <span class="k">if</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ping_timer</span><span class="o">.</span><span class="n">elapsed_time</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="n">period</span>
+        <span class="p">):</span>  <span class="c1"># occasionally update control table</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ping_timer</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">update_setup_info</span><span class="p">(</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;last_ping&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2"> %H:%M:%S&quot;</span><span class="p">)),</span>
+                    <span class="s2">&quot;queue_size&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">queue</span><span class="o">.</span><span class="n">qsize</span><span class="p">(),</span>
+                    <span class="s2">&quot;trials&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">trial_key</span><span class="p">[</span><span class="s2">&quot;trial_idx&quot;</span><span class="p">],</span>
+                    <span class="s2">&quot;total_liquid&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">total_reward</span><span class="p">,</span>
+                    <span class="s2">&quot;state&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">curr_state</span><span class="p">,</span>
+                <span class="p">}</span>
+            <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">cleanup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">while</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">queue</span><span class="o">.</span><span class="n">empty</span><span class="p">():</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Waiting for empty queue... qsize: </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">queue</span><span class="o">.</span><span class="n">qsize</span><span class="p">())</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">thread_end</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">createDataset</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">dataset_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">dataset_type</span><span class="p">:</span> <span class="nb">type</span><span class="p">,</span>
+        <span class="n">filename</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">log</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Create a dataset and return the dataset object.</span>
+<span class="sd">        Args:</span>
+<span class="sd">            target_path (str): The target path for the dataset.</span>
+<span class="sd">            dataset_name (str): The name of the dataset.</span>
+<span class="sd">            dataset_type (type): The datatype of the dataset.</span>
+<span class="sd">            filename (str, optional): The filename for the h5 file. If not provided,</span>
+<span class="sd">            a default filename will be generated based on the dataset name, animal ID,</span>
+<span class="sd">            session, and current timestamp.</span>
+<span class="sd">            log (bool, optional): If True call the log_recording</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            Tuple[str, Any]: A tuple containing the filename and the dataset object.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">folder</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;Recordings/</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">trial_key</span><span class="p">[</span><span class="s1">&#39;animal_id&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span> <span class="sa">f</span><span class="s2">&quot;_</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">trial_key</span><span class="p">[</span><span class="s1">&#39;session&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">/&quot;</span>
+        <span class="p">)</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">source_path</span> <span class="o">+</span> <span class="n">folder</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>  <span class="c1"># create path if necessary</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">target_path</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No target directory set! Autocopying will not work.&quot;</span><span class="p">)</span>
+            <span class="n">target_path</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">target_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">target_path</span> <span class="o">+</span> <span class="n">folder</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">target_path</span><span class="p">):</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">target_path</span><span class="p">)</span>
+
+        <span class="c1"># Generate filename if not provided</span>
+        <span class="k">if</span> <span class="n">filename</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">_</span><span class="si">%d</span><span class="s2">_</span><span class="si">%d</span><span class="s2">_</span><span class="si">%s</span><span class="s2">.h5&quot;</span> <span class="o">%</span> <span class="p">(</span>
+                <span class="n">dataset_name</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">trial_key</span><span class="p">[</span><span class="s2">&quot;animal_id&quot;</span><span class="p">],</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">trial_key</span><span class="p">[</span><span class="s2">&quot;session&quot;</span><span class="p">],</span>
+                <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">-%H-%M-%S&quot;</span><span class="p">),</span>
+            <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">filename</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">datasets</span><span class="p">:</span>
+            <span class="c1"># create h5 file if not exists</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">datasets</span><span class="p">[</span><span class="n">filename</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="n">path</span> <span class="o">+</span> <span class="n">filename</span><span class="p">,</span> <span class="n">target_path</span><span class="p">)</span>
+
+        <span class="c1"># create new dataset in the h5 files</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">datasets</span><span class="p">[</span><span class="n">filename</span><span class="p">]</span><span class="o">.</span><span class="n">createDataset</span><span class="p">(</span>
+            <span class="n">dataset_name</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dataset_type</span>
+        <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">log</span><span class="p">:</span>
+            <span class="n">rec_key</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+                <span class="n">rec_aim</span><span class="o">=</span><span class="n">dataset_name</span><span class="p">,</span>
+                <span class="n">software</span><span class="o">=</span><span class="s2">&quot;EthoPy&quot;</span><span class="p">,</span>
+                <span class="n">version</span><span class="o">=</span><span class="n">VERSION</span><span class="p">,</span>
+                <span class="n">filename</span><span class="o">=</span><span class="n">filename</span><span class="p">,</span>
+                <span class="n">source_path</span><span class="o">=</span><span class="n">path</span><span class="p">,</span>
+                <span class="n">target_path</span><span class="o">=</span><span class="n">target_path</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">log_recording</span><span class="p">(</span><span class="n">rec_key</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">datasets</span><span class="p">[</span><span class="n">filename</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">log_recording</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rec_key</span><span class="p">):</span>
+        <span class="n">recs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+            <span class="n">schema</span><span class="o">=</span><span class="s2">&quot;recording&quot;</span><span class="p">,</span>
+            <span class="n">table</span><span class="o">=</span><span class="s2">&quot;Recording&quot;</span><span class="p">,</span>
+            <span class="n">key</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">trial_key</span><span class="p">,</span>
+            <span class="n">fields</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;rec_idx&quot;</span><span class="p">],</span>
+        <span class="p">)</span>
+        <span class="n">rec_idx</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">recs</span> <span class="k">else</span> <span class="nb">max</span><span class="p">(</span><span class="n">recs</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;Recording&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="o">**</span><span class="n">rec_key</span><span class="p">,</span> <span class="s2">&quot;rec_idx&quot;</span><span class="p">:</span> <span class="n">rec_idx</span><span class="p">},</span> <span class="n">schema</span><span class="o">=</span><span class="s2">&quot;recording&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">closeDatasets</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">dataset</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">datasets</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">datasets</span><span class="p">[</span><span class="n">dataset</span><span class="p">]</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">get_ip</span><span class="p">():</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_DGRAM</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">s</span><span class="o">.</span><span class="n">connect</span><span class="p">((</span><span class="s2">&quot;8.8.8.8&quot;</span><span class="p">,</span> <span class="mi">80</span><span class="p">))</span>
+            <span class="n">ip</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">getsockname</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="n">ip</span> <span class="o">=</span> <span class="s2">&quot;127.0.0.1&quot;</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="n">s</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">ip</span>
+</code></pre></div>
+        </details>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="ethopy.core.Logger.Logger.protocol_path" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">protocol_path</span><span class="p">:</span> <span class="nb">str</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-property"><code>property</code></small>
+      <small class="doc doc-property doc-property-writable"><code>writable</code></small>
+  </span>
+
+<a href="#ethopy.core.Logger.Logger.protocol_path" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Get the protocol path.</p>
+
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>str</code></td>
+      <td><p>The protocol path.</p></td>
+    </tr>
+  </tbody>
+</table>    </div>
+
+  </div>
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="ethopy.core.Logger.Logger.createDataset" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">createDataset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset_name</span><span class="p">,</span> <span class="n">dataset_type</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">log</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
+
+
+<a href="#ethopy.core.Logger.Logger.createDataset" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Create a dataset and return the dataset object.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>target_path</code></td>
+        <td><code>str</code></td>
+        <td><p>The target path for the dataset.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>dataset_name</code></td>
+        <td><code>str</code></td>
+        <td><p>The name of the dataset.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>dataset_type</code></td>
+        <td><code>type</code></td>
+        <td><p>The datatype of the dataset.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>filename</code></td>
+        <td><code>str</code></td>
+        <td><p>The filename for the h5 file. If not provided,</p></td>
+        <td><code>None</code></td>
+      </tr>
+      <tr>
+        <td><code>log</code></td>
+        <td><code>bool</code></td>
+        <td><p>If True call the log_recording</p></td>
+        <td><code>True</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Tuple[str, Any]</code></td>
+      <td><p>A tuple containing the filename and the dataset object.</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>ethopy/core/Logger.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">createDataset</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">dataset_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">dataset_type</span><span class="p">:</span> <span class="nb">type</span><span class="p">,</span>
+    <span class="n">filename</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">log</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Create a dataset and return the dataset object.</span>
+<span class="sd">    Args:</span>
+<span class="sd">        target_path (str): The target path for the dataset.</span>
+<span class="sd">        dataset_name (str): The name of the dataset.</span>
+<span class="sd">        dataset_type (type): The datatype of the dataset.</span>
+<span class="sd">        filename (str, optional): The filename for the h5 file. If not provided,</span>
+<span class="sd">        a default filename will be generated based on the dataset name, animal ID,</span>
+<span class="sd">        session, and current timestamp.</span>
+<span class="sd">        log (bool, optional): If True call the log_recording</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        Tuple[str, Any]: A tuple containing the filename and the dataset object.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">folder</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="sa">f</span><span class="s2">&quot;Recordings/</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">trial_key</span><span class="p">[</span><span class="s1">&#39;animal_id&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span> <span class="sa">f</span><span class="s2">&quot;_</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">trial_key</span><span class="p">[</span><span class="s1">&#39;session&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">/&quot;</span>
+    <span class="p">)</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">source_path</span> <span class="o">+</span> <span class="n">folder</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>  <span class="c1"># create path if necessary</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">target_path</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No target directory set! Autocopying will not work.&quot;</span><span class="p">)</span>
+        <span class="n">target_path</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">target_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">target_path</span> <span class="o">+</span> <span class="n">folder</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">target_path</span><span class="p">):</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">target_path</span><span class="p">)</span>
+
+    <span class="c1"># Generate filename if not provided</span>
+    <span class="k">if</span> <span class="n">filename</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">_</span><span class="si">%d</span><span class="s2">_</span><span class="si">%d</span><span class="s2">_</span><span class="si">%s</span><span class="s2">.h5&quot;</span> <span class="o">%</span> <span class="p">(</span>
+            <span class="n">dataset_name</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">trial_key</span><span class="p">[</span><span class="s2">&quot;animal_id&quot;</span><span class="p">],</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">trial_key</span><span class="p">[</span><span class="s2">&quot;session&quot;</span><span class="p">],</span>
+            <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">-%H-%M-%S&quot;</span><span class="p">),</span>
+        <span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">filename</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">datasets</span><span class="p">:</span>
+        <span class="c1"># create h5 file if not exists</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">datasets</span><span class="p">[</span><span class="n">filename</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="n">path</span> <span class="o">+</span> <span class="n">filename</span><span class="p">,</span> <span class="n">target_path</span><span class="p">)</span>
+
+    <span class="c1"># create new dataset in the h5 files</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">datasets</span><span class="p">[</span><span class="n">filename</span><span class="p">]</span><span class="o">.</span><span class="n">createDataset</span><span class="p">(</span>
+        <span class="n">dataset_name</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dataset_type</span>
+    <span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">log</span><span class="p">:</span>
+        <span class="n">rec_key</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+            <span class="n">rec_aim</span><span class="o">=</span><span class="n">dataset_name</span><span class="p">,</span>
+            <span class="n">software</span><span class="o">=</span><span class="s2">&quot;EthoPy&quot;</span><span class="p">,</span>
+            <span class="n">version</span><span class="o">=</span><span class="n">VERSION</span><span class="p">,</span>
+            <span class="n">filename</span><span class="o">=</span><span class="n">filename</span><span class="p">,</span>
+            <span class="n">source_path</span><span class="o">=</span><span class="n">path</span><span class="p">,</span>
+            <span class="n">target_path</span><span class="o">=</span><span class="n">target_path</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log_recording</span><span class="p">(</span><span class="n">rec_key</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">datasets</span><span class="p">[</span><span class="n">filename</span><span class="p">]</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="ethopy.core.Logger.Logger.get" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="s1">&#39;experiment&#39;</span><span class="p">,</span> <span class="n">table</span><span class="o">=</span><span class="s1">&#39;Control&#39;</span><span class="p">,</span> <span class="n">fields</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="p">{},</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code>
+
+
+<a href="#ethopy.core.Logger.Logger.get" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Fetches data from a specified table in a schema.</p>
+      <p>schema (str): The schema to fetch data from. Defaults to "experiment".
+table (str): The table to fetch data from. Defaults to "Control".
+fields (str): The fields to fetch. Defaults to "".
+key (dict): The key used to fetch data. Defaults to an empty dict.
+**kwargs: Additional keyword arguments.</p>
+      <p>The fetched data.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>ethopy/core/Logger.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">schema</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;experiment&quot;</span><span class="p">,</span>
+    <span class="n">table</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;Control&quot;</span><span class="p">,</span>
+    <span class="n">fields</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="n">key</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(),</span>
+    <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Fetches data from a specified table in a schema.</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">    schema (str): The schema to fetch data from. Defaults to &quot;experiment&quot;.</span>
+<span class="sd">    table (str): The table to fetch data from. Defaults to &quot;Control&quot;.</span>
+<span class="sd">    fields (str): The fields to fetch. Defaults to &quot;&quot;.</span>
+<span class="sd">    key (dict): The key used to fetch data. Defaults to an empty dict.</span>
+<span class="sd">    **kwargs: Additional keyword arguments.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">    The fetched data.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">_table</span> <span class="o">=</span> <span class="n">rgetattr</span><span class="p">(</span><span class="nb">eval</span><span class="p">(</span><span class="n">schema</span><span class="p">),</span> <span class="n">table</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">_table</span><span class="p">()</span> <span class="o">&amp;</span> <span class="n">key</span><span class="p">)</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="o">*</span><span class="n">fields</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="ethopy.core.Logger.Logger.get_path" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">get_path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path_key</span><span class="p">,</span> <span class="n">default_path</span><span class="p">)</span></code>
+
+
+<a href="#ethopy.core.Logger.Logger.get_path" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Get the path from the configuration or create a new directory at the default path.</p>
+      <p>path_key (str): The key to look up in the configuration.
+default_path (str): The path to use if the key is not in the configuration.</p>
+      
+
+        <details class="quote">
+          <summary>Source code in <code>ethopy/core/Logger.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path_key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">default_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Get the path from the configuration or create a new directory at the default path.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">    path_key (str): The key to look up in the configuration.</span>
+<span class="sd">    default_path (str): The path to use if the key is not in the configuration.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">    str: The path from the configuration or the default path.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">path_key</span><span class="p">,</span> <span class="n">default_path</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">path</span><span class="p">:</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Setting storage directory: </span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">path</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="ethopy.core.Logger.Logger.handle_error" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">handle_error</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">table</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">thread_end</span><span class="p">,</span> <span class="n">queue</span><span class="p">)</span></code>
+
+
+<a href="#ethopy.core.Logger.Logger.handle_error" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Handles an error by logging the error message and add the item again in the queue
+and re-trying again later.</p>
+      <p>item : Description of parameter <code>item</code>.
+table : Description of parameter <code>table</code>.
+e (Exception): The exception that was raised.
+thread_end : Description of parameter <code>thread_end</code>.
+queue : Description of parameter <code>queue</code>.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>ethopy/core/Logger.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">handle_error</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">table</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">thread_end</span><span class="p">,</span> <span class="n">queue</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Handles an error by logging the error message and add the item again in the queue</span>
+<span class="sd">    and re-trying again later.</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">    item : Description of parameter `item`.</span>
+<span class="sd">    table : Description of parameter `table`.</span>
+<span class="sd">    e (Exception): The exception that was raised.</span>
+<span class="sd">    thread_end : Description of parameter `thread_end`.</span>
+<span class="sd">    queue : Description of parameter `queue`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">str_error</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Failed to insert:</span><span class="se">\n</span><span class="si">{</span><span class="n">item</span><span class="o">.</span><span class="n">tuple</span><span class="si">}</span><span class="se">\n</span><span class="s2"> in </span><span class="si">{</span><span class="n">table</span><span class="si">}</span><span class="se">\n</span><span class="s2"> With error:</span><span class="se">\n</span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">error</span><span class="p">:</span>
+        <span class="n">thread_end</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
+        <span class="k">raise</span> <span class="n">str_error</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Second time...&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">str_error</span><span class="o">+</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Will retry later&quot;</span><span class="p">)</span>
+    <span class="n">item</span><span class="o">.</span><span class="n">error</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">item</span><span class="o">.</span><span class="n">priority</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">priority</span> <span class="o">+</span> <span class="mi">2</span>
+    <span class="n">queue</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="ethopy.core.Logger.Logger.insert_item" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">insert_item</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">table</span><span class="p">)</span></code>
+
+
+<a href="#ethopy.core.Logger.Logger.insert_item" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Inserts an item into the specified table.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>item</code></td>
+        <td></td>
+        <td><p>The item to be inserted.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>table</code></td>
+        <td></td>
+        <td><p>The table to insert the item into.</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td><p>None</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>ethopy/core/Logger.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">insert_item</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">table</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Inserts an item into the specified table.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        item: The item to be inserted.</span>
+<span class="sd">        table: The table to insert the item into.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">table</span><span class="o">.</span><span class="n">insert1</span><span class="p">(</span>
+        <span class="n">item</span><span class="o">.</span><span class="n">tuple</span><span class="p">,</span>
+        <span class="n">ignore_extra_fields</span><span class="o">=</span><span class="n">item</span><span class="o">.</span><span class="n">ignore_extra_fields</span><span class="p">,</span>
+        <span class="n">skip_duplicates</span><span class="o">=</span><span class="kc">False</span> <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">replace</span> <span class="k">else</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">replace</span><span class="o">=</span><span class="n">item</span><span class="o">.</span><span class="n">replace</span><span class="p">,</span>
+    <span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="ethopy.core.Logger.Logger.inserter" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">inserter</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
+
+
+<a href="#ethopy.core.Logger.Logger.inserter" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>This method continuously inserts items from the queue into their respective tables in
+the database.</p>
+<p>It runs in a loop until the thread_end event is set. In each iteration, it checks if
+the queue is empty.
+If it is, it sleeps for 0.5 seconds and then continues to the next iteration.
+If the queue is not empty.
+it gets an item from the queue, acquires the thread lock, and tries to insert
+the item into its table.
+If an error occurs during the insertion, it handles the error.
+After the insertion, it releases the thread lock.
+If the item was marked to block, it marks the task as done.</p>
+
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td><p>None</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>ethopy/core/Logger.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">inserter</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This method continuously inserts items from the queue into their respective tables in</span>
+<span class="sd">    the database.</span>
+
+<span class="sd">    It runs in a loop until the thread_end event is set. In each iteration, it checks if</span>
+<span class="sd">    the queue is empty.</span>
+<span class="sd">    If it is, it sleeps for 0.5 seconds and then continues to the next iteration.</span>
+<span class="sd">    If the queue is not empty.</span>
+<span class="sd">    it gets an item from the queue, acquires the thread lock, and tries to insert</span>
+<span class="sd">    the item into its table.</span>
+<span class="sd">    If an error occurs during the insertion, it handles the error.</span>
+<span class="sd">    After the insertion, it releases the thread lock.</span>
+<span class="sd">    If the item was marked to block, it marks the task as done.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">while</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">thread_end</span><span class="o">.</span><span class="n">is_set</span><span class="p">():</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">queue</span><span class="o">.</span><span class="n">empty</span><span class="p">():</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+            <span class="k">continue</span>
+        <span class="n">item</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">queue</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+        <span class="n">table</span> <span class="o">=</span> <span class="n">rgetattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_schemata</span><span class="p">[</span><span class="n">item</span><span class="o">.</span><span class="n">schema</span><span class="p">],</span> <span class="n">item</span><span class="o">.</span><span class="n">table</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">thread_lock</span><span class="o">.</span><span class="n">acquire</span><span class="p">()</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">insert_item</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">table</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">validate_item</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">table</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">error</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">thread_end</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
+                <span class="k">raise</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">handle_error</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">table</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">thread_end</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">queue</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">thread_lock</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">block</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">queue</span><span class="o">.</span><span class="n">task_done</span><span class="p">()</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="ethopy.core.Logger.Logger.log" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">log</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">table</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code>
+
+
+<a href="#ethopy.core.Logger.Logger.log" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>This method logs the given data into the specified table in the experiment database.</p>
+<p>It first gets the elapsed time from the logger timer and adds it to the data dictionary.
+It then puts the data into the specified table. If the manual_run flag is set and the
+table is "Trial.StateOnset",
+it prints the state.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>table</code></td>
+        <td><code>str</code></td>
+        <td><p>The name of the table in the experiment database.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>data</code></td>
+        <td><code>dict</code></td>
+        <td><p>The data to be logged. Defaults to an empty dictionary.</p></td>
+        <td><code>None</code></td>
+      </tr>
+      <tr>
+        <td><code>**kwargs</code></td>
+        <td></td>
+        <td><p>Additional keyword arguments to be passed to the put method.</p></td>
+        <td><code>{}</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>float</code></td>
+      <td><p>The elapsed time from the logger timer.</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>ethopy/core/Logger.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">log</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">table</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This method logs the given data into the specified table in the experiment database.</span>
+
+<span class="sd">    It first gets the elapsed time from the logger timer and adds it to the data dictionary.</span>
+<span class="sd">    It then puts the data into the specified table. If the manual_run flag is set and the</span>
+<span class="sd">    table is &quot;Trial.StateOnset&quot;,</span>
+<span class="sd">    it prints the state.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        table (str): The name of the table in the experiment database.</span>
+<span class="sd">        data (dict, optional): The data to be logged. Defaults to an empty dictionary.</span>
+<span class="sd">        **kwargs: Additional keyword arguments to be passed to the put method.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        float: The elapsed time from the logger timer.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">tmst</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">logger_timer</span><span class="o">.</span><span class="n">elapsed_time</span><span class="p">()</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">data</span> <span class="ow">or</span> <span class="p">{}</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">table</span><span class="o">=</span><span class="n">table</span><span class="p">,</span> <span class="nb">tuple</span><span class="o">=</span><span class="p">{</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">trial_key</span><span class="p">,</span> <span class="s2">&quot;time&quot;</span><span class="p">:</span> <span class="n">tmst</span><span class="p">,</span> <span class="o">**</span><span class="n">data</span><span class="p">},</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">manual_run</span> <span class="ow">and</span> <span class="n">table</span> <span class="o">==</span> <span class="s2">&quot;Trial.StateOnset&quot;</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;State: &quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;state&quot;</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">tmst</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="ethopy.core.Logger.Logger.log_session" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">log_session</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">log_protocol</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+
+
+<a href="#ethopy.core.Logger.Logger.log_session" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Logs a session with the given parameters and optionally logs the protocol.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>params</code></td>
+        <td><code>Dict[str, Any]</code></td>
+        <td><p>Parameters for the session.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>log_protocol</code></td>
+        <td><code>bool</code></td>
+        <td><p>Whether to log the protocol information.</p></td>
+        <td><code>False</code></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>ethopy/core/Logger.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">log_session</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="n">log_protocol</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Logs a session with the given parameters and optionally logs the protocol.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        params (Dict[str, Any]): Parameters for the session.</span>
+<span class="sd">        log_protocol (bool): Whether to log the protocol information.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_initialize_session</span><span class="p">()</span>
+    <span class="n">session_key</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_session_key</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_log_session_entry</span><span class="p">(</span><span class="n">session_key</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">log_protocol</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_log_protocol</span><span class="p">()</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">_log_configuration</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_log_additional_configurations</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_set_setup_status</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">logger_timer</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>  <span class="c1"># Start session time</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="ethopy.core.Logger.Logger.put" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">put</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code>
+
+
+<a href="#ethopy.core.Logger.Logger.put" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Put an item in the queue.</p>
+      <p>**kwargs (Any): The item to put in the queue.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>ethopy/core/Logger.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">put</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Put an item in the queue.</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">    **kwargs (Any): The item to put in the queue.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">item</span> <span class="o">=</span> <span class="n">PrioritizedItem</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">queue</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">item</span><span class="o">.</span><span class="n">block</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">queue</span><span class="o">.</span><span class="n">task_done</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">queue</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="ethopy.core.Logger.Logger.setup_schema" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">setup_schema</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">extra_schema</span><span class="p">)</span></code>
+
+
+<a href="#ethopy.core.Logger.Logger.setup_schema" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Set up additional schema.</p>
+      <p>extra_schema (Dict[str, Any]): The additional schema to set up.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>ethopy/core/Logger.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">setup_schema</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">extra_schema</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Set up additional schema.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">    extra_schema (Dict[str, Any]): The additional schema to set up.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">schema</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">extra_schema</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="nb">globals</span><span class="p">()[</span><span class="n">schema</span><span class="p">]</span> <span class="o">=</span> <span class="n">dj</span><span class="o">.</span><span class="n">create_virtual_module</span><span class="p">(</span>
+            <span class="n">schema</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">create_tables</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">create_schema</span><span class="o">=</span><span class="kc">True</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_schemata</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+            <span class="p">{</span>
+                <span class="n">schema</span><span class="p">:</span> <span class="n">dj</span><span class="o">.</span><span class="n">create_virtual_module</span><span class="p">(</span>
+                    <span class="n">schema</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">connection</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">private_conn</span>
+                <span class="p">)</span>
+            <span class="p">}</span>
+        <span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="ethopy.core.Logger.Logger.update_protocol" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">update_protocol</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
+
+
+<a href="#ethopy.core.Logger.Logger.update_protocol" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>This method updates the protocol path based on the current setup.</p>
+<p>If the run is manual, it checks if the protocol file exists at the specified path.
+If the file does not exist, it prints an error message and returns False.</p>
+<p>If the run is not manual, it fetches the task index from the setup info.
+It then checks if there is a task with this index in the experiment's Task table.
+If there is no such task, it returns False.
+Otherwise, it fetches the protocol associated with this task and updates the protocol path.</p>
+
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>bool</code></td>
+      <td><p>True if the protocol path was successfully updated, False otherwise.</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>ethopy/core/Logger.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">update_protocol</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This method updates the protocol path based on the current setup.</span>
+
+<span class="sd">    If the run is manual, it checks if the protocol file exists at the specified path.</span>
+<span class="sd">    If the file does not exist, it prints an error message and returns False.</span>
+
+<span class="sd">    If the run is not manual, it fetches the task index from the setup info.</span>
+<span class="sd">    It then checks if there is a task with this index in the experiment&#39;s Task table.</span>
+<span class="sd">    If there is no such task, it returns False.</span>
+<span class="sd">    Otherwise, it fetches the protocol associated with this task and updates the protocol path.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        bool: True if the protocol path was successfully updated, False otherwise.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">manual_run</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">protocol_path</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Protocol file </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">protocol_path</span><span class="si">}</span><span class="s2"> not found!&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">task_idx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_setup_info</span><span class="p">(</span><span class="s1">&#39;task_idx&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">experiment</span><span class="o">.</span><span class="n">Task</span><span class="p">()</span> <span class="o">&amp;</span> <span class="nb">dict</span><span class="p">(</span><span class="n">task_idx</span><span class="o">=</span><span class="n">task_idx</span><span class="p">))</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="n">protocol</span> <span class="o">=</span> <span class="p">(</span><span class="n">experiment</span><span class="o">.</span><span class="n">Task</span><span class="p">()</span> <span class="o">&amp;</span> <span class="nb">dict</span><span class="p">(</span><span class="n">task_idx</span><span class="o">=</span><span class="n">task_idx</span><span class="p">))</span><span class="o">.</span><span class="n">fetch1</span><span class="p">(</span><span class="s1">&#39;protocol&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">protocol_path</span> <span class="o">=</span> <span class="n">protocol</span>
+    <span class="k">return</span> <span class="kc">True</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="ethopy.core.Logger.Logger.update_setup_info" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">update_setup_info</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">info</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+
+<a href="#ethopy.core.Logger.Logger.update_setup_info" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>This method updates the setup information with the provided info and key.</p>
+<p>It first fetches the existing setup information from the experiment's Control table,
+then updates it with the provided info. If 'status' is in the provided info, it blocks
+and validates the update operation.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>info</code></td>
+        <td><code>dict</code></td>
+        <td><p>The information to update the setup with.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>key</code></td>
+        <td><code>dict</code></td>
+        <td><p>Additional keys to fetch the setup information with.</p></td>
+        <td><code>None</code></td>
+      </tr>
+  </tbody>
+</table>      <p>Side Effects:
+    Updates the setup_info attribute with the new setup information.
+    Updates the setup_status attribute with the new status.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>ethopy/core/Logger.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">update_setup_info</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">info</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="n">key</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This method updates the setup information with the provided info and key.</span>
+
+<span class="sd">    It first fetches the existing setup information from the experiment&#39;s Control table,</span>
+<span class="sd">    then updates it with the provided info. If &#39;status&#39; is in the provided info, it blocks</span>
+<span class="sd">    and validates the update operation.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        info (dict): The information to update the setup with.</span>
+<span class="sd">        key (dict, optional): Additional keys to fetch the setup information with.</span>
+<span class="sd">        Defaults to an empty dict.</span>
+
+<span class="sd">    Side Effects:</span>
+<span class="sd">        Updates the setup_info attribute with the new setup information.</span>
+<span class="sd">        Updates the setup_status attribute with the new status.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">key</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">key</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">setup_info</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="o">**</span><span class="p">(</span><span class="n">experiment</span><span class="o">.</span><span class="n">Control</span><span class="p">()</span> <span class="o">&amp;</span> <span class="p">{</span><span class="o">**</span><span class="p">{</span><span class="s2">&quot;setup&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">setup</span><span class="p">},</span> <span class="o">**</span><span class="n">key</span><span class="p">})</span><span class="o">.</span><span class="n">fetch1</span><span class="p">(),</span>
+        <span class="o">**</span><span class="n">info</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="n">block</span> <span class="o">=</span> <span class="kc">True</span> <span class="k">if</span> <span class="s2">&quot;status&quot;</span> <span class="ow">in</span> <span class="n">info</span> <span class="k">else</span> <span class="kc">False</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">put</span><span class="p">(</span>
+        <span class="n">table</span><span class="o">=</span><span class="s2">&quot;Control&quot;</span><span class="p">,</span>
+        <span class="nb">tuple</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">setup_info</span><span class="p">,</span>
+        <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">priority</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">block</span><span class="o">=</span><span class="n">block</span><span class="p">,</span>
+        <span class="n">validate</span><span class="o">=</span><span class="n">block</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">setup_status</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">setup_info</span><span class="p">[</span><span class="s2">&quot;status&quot;</span><span class="p">]</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="ethopy.core.Logger.Logger.validate_item" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">validate_item</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">table</span><span class="p">)</span></code>
+
+
+<a href="#ethopy.core.Logger.Logger.validate_item" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Validates an item against a table.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>ethopy/core/Logger.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">validate_item</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">table</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Validates an item against a table.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">validate</span><span class="p">:</span>  <span class="c1"># validate tuple exists in database</span>
+        <span class="n">key</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="ow">in</span> <span class="n">item</span><span class="o">.</span><span class="n">tuple</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">table</span><span class="o">.</span><span class="n">primary_key</span><span class="p">}</span>
+        <span class="k">if</span> <span class="s2">&quot;status&quot;</span> <span class="ow">in</span> <span class="n">item</span><span class="o">.</span><span class="n">tuple</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="n">key</span><span class="p">[</span><span class="s2">&quot;status&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">tuple</span><span class="p">[</span><span class="s2">&quot;status&quot;</span><span class="p">]</span>
+        <span class="k">while</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">table</span> <span class="o">&amp;</span> <span class="n">key</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h2 id="ethopy.core.Logger.PrioritizedItem" class="doc doc-heading">
+        <code>
+PrioritizedItem        </code>
+
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-dataclass"><code>dataclass</code></small>
+  </span>
+
+<a href="#ethopy.core.Logger.PrioritizedItem" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>PrioritizedItem(table: str, tuple: Any, field: str = '', value: Any = '', schema: str = 'experiment', replace: bool = False, block: bool = False, validate: bool = False, priority: int = 50, error: bool = False, ignore_extra_fields: bool = True)</p>
+
+        <details class="quote">
+          <summary>Source code in <code>ethopy/core/Logger.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">PrioritizedItem</span><span class="p">:</span>
+    <span class="n">table</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">datafield</span><span class="p">(</span><span class="n">compare</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="nb">tuple</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="n">datafield</span><span class="p">(</span><span class="n">compare</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">field</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">datafield</span><span class="p">(</span><span class="n">compare</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="n">value</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="n">datafield</span><span class="p">(</span><span class="n">compare</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="n">schema</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">datafield</span><span class="p">(</span><span class="n">compare</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;experiment&quot;</span><span class="p">)</span>
+    <span class="n">replace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="n">datafield</span><span class="p">(</span><span class="n">compare</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">block</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="n">datafield</span><span class="p">(</span><span class="n">compare</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">validate</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="n">datafield</span><span class="p">(</span><span class="n">compare</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">priority</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">datafield</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+    <span class="n">error</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="n">datafield</span><span class="p">(</span><span class="n">compare</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">ignore_extra_fields</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="n">datafield</span><span class="p">(</span><span class="n">compare</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+  
+    
+  
+  
+    
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-06-03T14:31:31+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-03</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Created">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-06-03T14:31:31+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-03</span>
+  </span>
+
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 - 2024 Alex Evangelou
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.top", "search.highlight", "search.share"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.081f42fc.min.js"></script>
+      
+        <script src="../js/timeago.min.js"></script>
+      
+        <script src="../js/timeago_mkdocs_material.js"></script>
+      
+    
+  </body>
+</html>
