@@ -16,6 +16,8 @@ def run_ethopy(protocol=False):
             try:
                 if logger.update_protocol():
                     exec(open(logger.protocol_path, encoding='utf-8').read())
+                else:
+                    raise FileNotFoundError('Protocol file not found!')
             except Exception as e:
                 ERROR = traceback.format_exc()
                 logger.update_setup_info({'state': 'ERROR!', 'notes': str(e), 'status': 'exit'})

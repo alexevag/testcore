@@ -483,11 +483,15 @@ class Logger:
         """
         pr_name = self.protocol_path
         pr_file = np.fromfile(self.protocol_path, dtype=np.int8)
-        git_hash = (
-            subprocess.check_output(["git", "rev-parse", "--short", "HEAD"])
-            .decode("ascii")
-            .strip()
-        )
+        try:
+            git_hash = (
+                subprocess.check_output(["git", "rev-parse", "--short", "HEAD"])
+                .decode("ascii")
+                .strip()
+            )
+        except subprocess.CalledProcessError:
+            git_hash = f"pip version {VERSION}"
+
         self.put(
             table="Session.Protocol",
             tuple={
