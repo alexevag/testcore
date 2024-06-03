@@ -1222,11 +1222,15 @@ Logger        </code>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">pr_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">protocol_path</span>
         <span class="n">pr_file</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fromfile</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">protocol_path</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int8</span><span class="p">)</span>
-        <span class="n">git_hash</span> <span class="o">=</span> <span class="p">(</span>
-            <span class="n">subprocess</span><span class="o">.</span><span class="n">check_output</span><span class="p">([</span><span class="s2">&quot;git&quot;</span><span class="p">,</span> <span class="s2">&quot;rev-parse&quot;</span><span class="p">,</span> <span class="s2">&quot;--short&quot;</span><span class="p">,</span> <span class="s2">&quot;HEAD&quot;</span><span class="p">])</span>
-            <span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;ascii&quot;</span><span class="p">)</span>
-            <span class="o">.</span><span class="n">strip</span><span class="p">()</span>
-        <span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">git_hash</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">subprocess</span><span class="o">.</span><span class="n">check_output</span><span class="p">([</span><span class="s2">&quot;git&quot;</span><span class="p">,</span> <span class="s2">&quot;rev-parse&quot;</span><span class="p">,</span> <span class="s2">&quot;--short&quot;</span><span class="p">,</span> <span class="s2">&quot;HEAD&quot;</span><span class="p">])</span>
+                <span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;ascii&quot;</span><span class="p">)</span>
+                <span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+            <span class="p">)</span>
+        <span class="k">except</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">CalledProcessError</span><span class="p">:</span>
+            <span class="n">git_hash</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;pip version </span><span class="si">{</span><span class="n">VERSION</span><span class="si">}</span><span class="s2">&quot;</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">put</span><span class="p">(</span>
             <span class="n">table</span><span class="o">=</span><span class="s2">&quot;Session.Protocol&quot;</span><span class="p">,</span>
             <span class="nb">tuple</span><span class="o">=</span><span class="p">{</span>
