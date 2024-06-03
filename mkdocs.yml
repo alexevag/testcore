@@ -84,3 +84,4 @@ nav:
     - API Reference:
           - ethopy module: ethopy.md
           - common module: common.md
+          - Logger module: logger.md
