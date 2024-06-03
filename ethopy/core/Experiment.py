@@ -8,9 +8,9 @@ import numpy as np
 from scipy import stats
 from sklearn.metrics import roc_auc_score
 
-from core.Logger import behavior, experiment, mice, stimulus
-from utils.helper_functions import factorize, generate_conf_list, make_hash, rgetattr
-from utils.Timer import Timer
+from ethopy.core.Logger import behavior, experiment, mice, stimulus
+from ethopy.utils.helper_functions import factorize, generate_conf_list, make_hash, rgetattr
+from ethopy.utils.Timer import Timer
 
 
 class State:

@@ -1,8 +1,8 @@
 import time
 import traceback
 
-from core.Logger import Logger
-from utils.Start import PyWelcome
+from .core.Logger import Logger
+from .utils.Start import PyWelcome
 
 def run_ethopy(protocol=False):
     ERROR = None

@@ -3,10 +3,10 @@ import os
 import datajoint as dj
 import numpy as np
 
-from core.Logger import experiment, stimulus
-from utils.helper_functions import DictStruct
-from utils.Presenter import Presenter
-from utils.Timer import Timer
+from ethopy.core.Logger import experiment, stimulus
+from ethopy.utils.helper_functions import DictStruct
+from ethopy.utils.Presenter import Presenter
+from ethopy.utils.Timer import Timer
 
 
 @stimulus.schema

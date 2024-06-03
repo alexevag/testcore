@@ -1,6 +1,6 @@
 import pygame
 
-from core.Interface import *
+from ethopy.core.Interface import *
 
 
 class DummyPorts(Interface):

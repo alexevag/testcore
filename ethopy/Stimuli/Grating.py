@@ -1,4 +1,4 @@
-from core.Stimulus import *
+from ethopy.core.Stimulus import *
 import io, imageio
 from utils.helper_functions import flat2curve
 from utils.Presenter import *

@@ -17,30 +17,31 @@ from typing import Any, Dict, Optional
 import datajoint as dj
 import numpy as np
 
-from utils.helper_functions import rgetattr
-from utils.Timer import Timer
-from utils.Writer import Writer
-
-with open("local_conf.json", "r", encoding="utf-8") as f:
-    config = json.load(f)
-dj.config.update(config["dj_local_conf"])
-dj.logger.setLevel(dj.config["loglevel"])
+from ethopy.utils.helper_functions import rgetattr
+from ethopy.utils.Timer import Timer
+from ethopy.utils.Writer import Writer
 
 environ["PYGAME_HIDE_SUPPORT_PROMPT"] = "1"
+try:
+    with open("local_conf.json", "r", encoding="utf-8") as f:
+        config = json.load(f)
+    dj.config.update(config["dj_local_conf"])
+    dj.logger.setLevel(dj.config["loglevel"])
 
-# Schema mappings
-SCHEMATA = config["SCHEMATA"]
-
-# Create virtual modules
-virtual_modules = {
-    name: dj.create_virtual_module(name, schema, create_tables=True, create_schema=True)
-    for name, schema in SCHEMATA.items()
-}
-experiment = virtual_modules["experiment"]
-stimulus = virtual_modules["stimulus"]
-behavior = virtual_modules["behavior"]
-recording = virtual_modules["recording"]
-mice = virtual_modules["mice"]
+    # Schema mappings
+    SCHEMATA = config["SCHEMATA"]
+    # Create virtual modules
+    virtual_modules = {
+        name: dj.create_virtual_module(name, schema, create_tables=True, create_schema=True)
+        for name, schema in SCHEMATA.items()
+    }
+    experiment = virtual_modules["experiment"]
+    stimulus = virtual_modules["stimulus"]
+    behavior = virtual_modules["behavior"]
+    recording = virtual_modules["recording"]
+    mice = virtual_modules["mice"]
+except FileNotFoundError:
+    print("No local configuration file found!")
 
 VERSION = "0.1"
 

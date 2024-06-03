@@ -1,4 +1,4 @@
-from core.Behavior import *
+from ethopy.core.Behavior import *
 from utils.Timer import *
 import numpy as np
 

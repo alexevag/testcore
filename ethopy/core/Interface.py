@@ -5,8 +5,8 @@ from importlib import import_module
 
 import numpy as np
 
-from utils.helper_functions import reverse_lookup
-from utils.Timer import Timer
+from ethopy.utils.helper_functions import reverse_lookup
+from ethopy.utils.Timer import Timer
 
 
 class Interface:
