@@ -1,3 +1,3 @@
 # Core Interface module
-
-::: ethopy.core.Interface
+<!-- 
+::: ethopy.core.Interface -->

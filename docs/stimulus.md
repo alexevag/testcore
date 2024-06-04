@@ -1,3 +1,3 @@
 # Core Stimulus module
 
-::: ethopy.core.Stimulus
+<!-- ::: ethopy.core.Stimulus -->

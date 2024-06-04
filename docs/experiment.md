@@ -1,3 +1,3 @@
 # Core Experiment module
 
-::: ethopy.core.Experiment
+<!-- ::: ethopy.core.Experiment -->
