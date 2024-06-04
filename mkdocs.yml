@@ -79,7 +79,7 @@ nav:
     - API Reference:
           - ethopy module: ethopy.md
           - Logger module: logger.md
-          - Behavior module: behavior.md
-          - Experiment module: experiment.md
-          - Interface module: interface.md
-          - Stimulus module: stimulus.md
+        #   - Behavior module: behavior.md
+        #   - Experiment module: experiment.md
+        #   - Interface module: interface.md
+        #   - Stimulus module: stimulus.md
