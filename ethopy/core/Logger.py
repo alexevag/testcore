@@ -22,7 +22,14 @@ from ethopy.utils.Timer import Timer
 from ethopy.utils.Writer import Writer
 
 environ["PYGAME_HIDE_SUPPORT_PROMPT"] = "1"
-try:
+class cr_module():
+    
+    def schema(self, func):
+        def wrapper(*args, **kwargs):
+            return func(*args, **kwargs)
+        return wrapper
+    
+if os.path.isfile("_local_conf.json"):
     with open("local_conf.json", "r", encoding="utf-8") as f:
         config = json.load(f)
     dj.config.update(config["dj_local_conf"])
@@ -40,7 +47,12 @@ try:
     behavior = virtual_modules["behavior"]
     recording = virtual_modules["recording"]
     mice = virtual_modules["mice"]
-except FileNotFoundError:
+else:
+    experiment = cr_module()
+    stimulus = cr_module()
+    behavior = cr_module()
+    recording = cr_module()
+    mice = cr_module()
     print("No local configuration file found!")
 
 VERSION = "0.1"
