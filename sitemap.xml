@@ -6,6 +6,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://alexevag.github.io/testcore/behavior/</loc>
+         <lastmod>2024-06-04</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://alexevag.github.io/testcore/changelog/</loc>
          <lastmod>2024-06-04</lastmod>
          <changefreq>daily</changefreq>
