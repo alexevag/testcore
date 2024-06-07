@@ -23,7 +23,7 @@ from ethopy.utils.Writer import Writer
 
 environ["PYGAME_HIDE_SUPPORT_PROMPT"] = "1"
 class cr_module():
-    
+
     def schema(self, func):
         def wrapper(*args, **kwargs):
             return func(*args, **kwargs)
@@ -48,6 +48,7 @@ if os.path.isfile("_local_conf.json"):
     recording = virtual_modules["recording"]
     mice = virtual_modules["mice"]
 else:
+    config = {}
     experiment = cr_module()
     stimulus = cr_module()
     behavior = cr_module()
