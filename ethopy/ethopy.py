@@ -25,3 +25,5 @@ def run_ethopy(protocol=False):
     logger.cleanup()
 
     return ERROR
+
+print("test ethopy.py", test)
