@@ -7,7 +7,7 @@ from ethopy.core.Logger import experiment
 
 
 @experiment.schema
-class MatchPort(dj.Part):
+class MatchPort(dj.Manual):
     definition = """
     # 2AFC experiment conditions
     -> experiment.Condition
