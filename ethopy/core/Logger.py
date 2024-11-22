@@ -29,7 +29,7 @@ class cr_module():
             return func(*args, **kwargs)
         return wrapper
     
-if os.path.isfile("_local_conf.json"):
+if os.path.isfile("local_conf.json"):
     with open("local_conf.json", "r", encoding="utf-8") as f:
         config = json.load(f)
     dj.config.update(config["dj_local_conf"])
