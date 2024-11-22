@@ -1,38 +1,42 @@
-from ethopy.core.Experiment import *
+import time
+
+import datajoint as dj
+
+from ethopy.core.Experiment import ExperimentClass, State
+from ethopy.core.Logger import experiment
 
 
 @experiment.schema
-class Condition(dj.Manual):
-    class MatchPort(dj.Part):
-        definition = """
-        # 2AFC experiment conditions
-        -> Condition
-        ---
-        max_reward=3000             : smallint
-        min_reward=500              : smallint
-        hydrate_delay=0             : int # delay hydration in minutes
-        
-        trial_selection='staircase' : enum('fixed','block','random','staircase', 'biased') 
-        difficulty                  : int   
-        bias_window=5               : smallint
-        staircase_window=20         : smallint
-        stair_up=0.7                : float
-        stair_down=0.55             : float
-        noresponse_intertrial=1     : tinyint(1)
-        incremental_punishment=1    : tinyint(1)
-        next_up=0                   : tinyint
-        next_down=0                 : tinyint
-        metric='accuracy'           : enum('accuracy','dprime') 
-        antibias=1                  : tinyint(1)
-        
-        init_ready                  : int
-        trial_ready                 : int
-        intertrial_duration         : int
-        trial_duration              : int
-        reward_duration             : int
-        punish_duration             : int
-        abort_duration              : int 
-        """
+class MatchPort(dj.Part):
+    definition = """
+    # 2AFC experiment conditions
+    -> experiment.Condition
+    ---
+    max_reward=3000             : smallint
+    min_reward=500              : smallint
+    hydrate_delay=0             : int # delay hydration in minutes
+
+    trial_selection='staircase' : enum('fixed','block','random','staircase', 'biased')
+    difficulty                  : int
+    bias_window=5               : smallint
+    staircase_window=20         : smallint
+    stair_up=0.7                : float
+    stair_down=0.55             : float
+    noresponse_intertrial=1     : tinyint(1)
+    incremental_punishment=1    : tinyint(1)
+    next_up=0                   : tinyint
+    next_down=0                 : tinyint
+    metric='accuracy'           : enum('accuracy','dprime')
+    antibias=1                  : tinyint(1)
+
+    init_ready                  : int
+    trial_ready                 : int
+    intertrial_duration         : int
+    trial_duration              : int
+    reward_duration             : int
+    punish_duration             : int
+    abort_duration              : int
+    """
 
 
 class Experiment(State, ExperimentClass):

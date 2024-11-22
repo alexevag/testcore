@@ -55,7 +55,11 @@ else:
     recording = cr_module()
     mice = cr_module()
     print("No local configuration file found!")
+    # Get current working directory
+    current_directory = os.getcwd()
 
+    # Print the current working directory
+    print("Current Directory:", current_directory)
 VERSION = "0.1"
 
 
